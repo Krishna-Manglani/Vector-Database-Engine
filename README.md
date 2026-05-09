@@ -1,9 +1,8 @@
-# VectorDB — Build a Vector Database from Scratch in C++
+# VectorDB — Build a Vector Database from Scratch 
 
-A fully working **Vector Database** built from scratch in C++ with a web UI.  
+A fully working **Vector Database** built from scratch in python with a web UI.  
 Implements **HNSW**, **KD-Tree**, and **Brute Force** search algorithms side-by-side, plus a **RAG pipeline** powered by a local LLM via Ollama.
 
-> Built as an educational project to show how production vector databases like Pinecone, Weaviate, and Chroma actually work under the hood.
 
 ---
 
@@ -30,7 +29,7 @@ Your Text
 Ollama (nomic-embed-text)          ← converts text to a 768-dimensional vector
     │
     ▼
-HNSW Index (C++)                   ← indexes the vector in a multilayer graph
+HNSW Index (Python)                   ← indexes the vector in a multilayer graph
     │
     ▼
 Semantic Search                    ← finds nearest neighbors in vector space
@@ -48,9 +47,7 @@ Answer
 
 ## Prerequisites
 
-You need **3 things** installed on your Windows laptop:
-
-1. **MSYS2** (gives you g++ compiler)
+You need **2 things** installed on your Windows laptop:
 2. **Git**
 3. **Ollama** (runs the local AI models)
 
@@ -58,35 +55,6 @@ You need **3 things** installed on your Windows laptop:
 
 ## Step-by-Step Setup (Windows)
 
-### Step 1 — Install MSYS2 (C++ Compiler)
-
-1. Go to **https://www.msys2.org** and download the installer
-2. Run the installer, keep default path (`C:\msys64`)
-3. After install, open **MSYS2 UCRT64** from Start Menu (the orange icon)
-4. Run these commands inside the MSYS2 terminal:
-
-```bash
-pacman -Syu
-```
-*(Close and reopen the terminal if it asks you to)*
-
-```bash
-pacman -S mingw-w64-ucrt-x86_64-gcc
-```
-
-5. Add g++ to your Windows PATH:
-   - Press `Win + R`, type `sysdm.cpl`, press Enter
-   - Click **Advanced** → **Environment Variables**
-   - Under **System variables**, find **Path**, click **Edit**
-   - Click **New** and add: `C:\msys64\ucrt64\bin`
-   - Click OK on all windows
-   - **Open a new PowerShell** and verify:
-   ```
-   g++ --version
-   ```
-   You should see something like `g++ (GCC) 15.x.x`
-
----
 
 ### Step 2 — Install Git
 
@@ -128,33 +96,6 @@ You should see both models listed.
 
 ### Step 4 — Clone the Repository
 
-Open **PowerShell** and run:
-
-```powershell
-git clone https://github.com/YOUR_USERNAME/VectorDB.git
-cd VectorDB
-```
-
-*(Replace `YOUR_USERNAME` with the actual GitHub username)*
-
----
-
-### Step 5 — Compile the C++ Server
-
-Inside the `VectorDB` folder, run:
-
-```powershell
-g++ -std=c++17 -O2 main.cpp -o db -lws2_32
-```
-
-This produces `db.exe`. It takes about 10–20 seconds.
-
-> **Troubleshooting:**
-> - `g++: command not found` → MSYS2 not in PATH, redo Step 1 point 5
-> - `undefined reference to WSA...` → missing `-lws2_32` flag, add it
-> - Takes too long? Remove `-O2` for faster (but slower executable) compile
-
----
 
 ### Step 6 — Run Everything
 
@@ -271,7 +212,7 @@ curl -X POST http://localhost:8080/doc/ask `
 
 ```
 VectorDB/
-├── main.cpp        ← C++ backend (HNSW, KD-Tree, BruteForce, REST API, RAG)
+├── main.cpp        ← Python backend (HNSW, KD-Tree, BruteForce, REST API, RAG)
 ├── httplib.h       ← Single-header HTTP server library (cpp-httplib)
 ├── index.html      ← Frontend (PCA scatter plot, chat UI, benchmark)
 └── README.md       ← This file
