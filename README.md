@@ -56,7 +56,7 @@ You need **2 things** installed on your Windows laptop:
 ## Step-by-Step Setup (Windows)
 
 
-### Step 2 — Install Git
+### Step 1 — Install Git
 
 1. Go to **https://git-scm.com/download/win** and download Git for Windows
 2. Run the installer with default settings
@@ -67,7 +67,7 @@ git --version
 
 ---
 
-### Step 3 — Install Ollama (Local AI Models)
+### Step 2 — Install Ollama (Local AI Models)
 
 1. Go to **https://ollama.com** and click **Download for Windows**
 2. Run the installer
@@ -94,10 +94,10 @@ You should see both models listed.
 
 ---
 
-### Step 4 — Clone the Repository
+### Step 3 — Clone the Repository
 
 
-### Step 6 — Run Everything
+### Step 4 — Run Everything
 
 **Terminal 1** — Start Ollama (if not already running):
 ```powershell
